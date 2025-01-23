@@ -43,4 +43,4 @@ ENV INCUS_AGENT_PATH="/opt/incus/agent/"
 ENV INCUS_UI="/opt/incus/ui/"
 
 # Run the incusd binary
-CMD ["/usr/bin/tini" "/start.sh"]
+CMD ["/usr/bin/tini", "--", "/start.sh"]
