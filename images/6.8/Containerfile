@@ -19,7 +19,7 @@ RUN echo "deb http://deb.debian.org/debian bookworm contrib" >> /etc/apt/sources
     apt-get install --no-install-recommends -y \
         fuse nftables ebtables arptables iproute2 \
         thin-provisioning-tools openvswitch-switch \
-        btrfs-progs lvm2 udev iptables kmod nano vim && \
+        btrfs-progs lvm2 udev iptables kmod nano vim tini && \
 
     apt-get install --no-install-recommends --no-install-suggests -y \
         zfsutils-linux && \
