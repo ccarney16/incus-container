@@ -1,0 +1,33 @@
+[Unit]
+Description=Incus - Daemon
+After=network-online.target
+Requires=network-online.target
+#After=network-online.target openvswitch-switch.service incus-lxcfs.service incus.socket
+#Requires=network-online.target incus-lxcfs.service incus.socket
+
+[Container]
+Image=docker.io/ccarney16/incus:6.8
+
+# Environment
+Environment=SYSTEMD_IGNORE_CHROOT=true
+
+# Networking
+
+Network=host
+
+## Volume Configuration
+
+Volume=/dev:/dev
+Volume=/var/lib/incus:/var/lib/incus
+Volume=/lib/modules:/lib/modules:ro
+Volume=/run/dbus/system_bus_socket:/run/dbus/system_bus_socket
+Volume=/run/systemd/system:/run/systemd/system
+#Volume=/sys/fs/cgroup:/sys/fs/cgroup
+# Volume=/run/openvswitch:/run/openvswitch:ro
+
+## Security Options
+
+CgroupsMode=no-conmon
+Unmask=/sys/fs/cgroup
+PodmanArgs=--cgroupns=host
+PodmanArgs=--privileged
